@@ -5,7 +5,7 @@ src/*
 !src/.gitkeep
 
 nginx/sites-available/*
-!nginx/sites-available/.gitkeep
+!nginx/sites-available/default.conf
 
 nginx/sites-enabled/*
 
