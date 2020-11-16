@@ -1,0 +1,43 @@
+version: '3'
+
+networks:
+    lemp:
+
+services:
+    nginx:
+        image: nginx:latest
+        container_name: zknginx
+        ports:
+            - "40080:80"
+        volumes:
+            - ./src:/var/www/html
+            - ./nginx/conf.d:/etc/nginx/conf.d
+            - ./nginx/log:/var/log/nginx
+        depends_on:
+            - php
+            - mysql
+        privileged: true
+        networks:
+            - lemp
+    mysql:
+        image: mariadb:latest
+        container_name: zkmysql
+        ports:
+            - "43306:3306"
+        volumes:
+            - ./mysql:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+        networks:
+            - lemp
+    php:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: zkphp
+        volumes:
+            - ./src:/var/www/html
+        ports:
+            - "49000:9000"
+        networks:
+            - lemp
