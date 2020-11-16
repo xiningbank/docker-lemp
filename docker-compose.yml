@@ -41,3 +41,14 @@ services:
             - "49000:9000"
         networks:
             - lemp
+    phpmyadmin:
+        image: phpmyadmin:latest
+        container_name: zkphpmyadmin
+        ports:
+            - "48080:80"
+        environment:
+            PMA_HOST: mysql
+            PMA_USER: root
+            PMA_PASSWORD: root
+        networks:
+          - lemp
