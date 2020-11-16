@@ -30,6 +30,7 @@ services:
             - ./mysql:/var/lib/mysql
         environment:
             MYSQL_ROOT_PASSWORD: root
+            TZ: "Asia/Shanghai"
         networks:
             - lemp
     php:
