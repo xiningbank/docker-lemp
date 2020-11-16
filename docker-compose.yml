@@ -8,10 +8,12 @@ services:
         image: nginx:latest
         container_name: zknginx
         ports:
-            - "40080:80"
+            - "50080:80"
         volumes:
             - ./src:/var/www/html
-            - ./nginx/conf.d:/etc/nginx/conf.d
+            - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+            - ./nginx/sites-available:/etc/nginx/sites-available
+            - ./nginx/sites-enabled:/etc/nginx/sites-enabled
             - ./nginx/log:/var/log/nginx
         depends_on:
             - php
@@ -23,7 +25,7 @@ services:
         image: mariadb:latest
         container_name: zkmysql
         ports:
-            - "43306:3306"
+            - "53306:3306"
         volumes:
             - ./mysql:/var/lib/mysql
         environment:
@@ -38,14 +40,14 @@ services:
         volumes:
             - ./src:/var/www/html
         ports:
-            - "49000:9000"
+            - "59000:9000"
         networks:
             - lemp
     phpmyadmin:
         image: phpmyadmin:latest
         container_name: zkphpmyadmin
         ports:
-            - "48080:80"
+            - "58080:80"
         environment:
             PMA_HOST: mysql
             PMA_USER: root
