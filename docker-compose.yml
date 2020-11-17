@@ -9,11 +9,13 @@ services:
         container_name: zknginx
         ports:
             - "50080:80"
+            - "50443:443"
         volumes:
             - ./src:/var/www/html
             - ./nginx/nginx.conf:/etc/nginx/nginx.conf
             - ./nginx/sites-available:/etc/nginx/sites-available
             - ./nginx/sites-enabled:/etc/nginx/sites-enabled
+            - ./nginx/cert:/etc/cert
             - ./nginx/log:/var/log/nginx
         depends_on:
             - php
