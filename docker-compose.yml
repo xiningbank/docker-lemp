@@ -37,7 +37,7 @@ services:
             - lemp
     php:
         build:
-            context: .
+            context: ./php/.
             dockerfile: Dockerfile
         container_name: zkphp
         volumes:
