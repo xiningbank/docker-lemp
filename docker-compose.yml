@@ -46,6 +46,13 @@ services:
             - "59000:9000"
         networks:
             - lemp
+    redis:
+        image: redis:latest
+        container_name: zkredis
+        ports:
+            - "56379:6379"
+        networks:
+            - lemp
     phpmyadmin:
         image: phpmyadmin:latest
         container_name: zkphpmyadmin

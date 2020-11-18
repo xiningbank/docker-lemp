@@ -4,4 +4,5 @@ MAINTAINER zhoukan "zkshpro@163.com"
 
 RUN apt-get update \
 	&& apt-get install vim -qqy \
-    && docker-php-ext-install bcmath pdo_mysql
+    && docker-php-ext-install bcmath pdo_mysql \
+    && pecl install redis && docker-php-ext-enable redis
