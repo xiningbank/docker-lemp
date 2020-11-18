@@ -4,5 +4,9 @@ MAINTAINER zhoukan "zkshpro@163.com"
 
 RUN apt-get update \
 	&& apt-get install vim -qqy \
+	&& apt-get install git -qqy \
     && docker-php-ext-install bcmath pdo_mysql \
     && pecl install redis && docker-php-ext-enable redis
+
+# instlal composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
