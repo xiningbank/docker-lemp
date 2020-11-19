@@ -7,7 +7,8 @@ RUN apt-get update \
 	&& apt-get install git -qqy \
 	&& apt-get install zip -qqy \
 	&& apt-get install unzip -qqy \
-    && docker-php-ext-install bcmath pdo_mysql \
+    && docker-php-ext-install bcmath \
+    && docker-php-ext-install pdo_mysql \
     && pecl install redis && docker-php-ext-enable redis
 
 # install composer
