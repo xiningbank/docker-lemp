@@ -49,6 +49,9 @@ services:
     redis:
         image: redis:latest
         container_name: zkredis
+        volumes:
+            - ./redis/redis.conf:/etc/redis/redis.conf
+            - ./redis/data:/data
         ports:
             - "56379:6379"
         networks:
