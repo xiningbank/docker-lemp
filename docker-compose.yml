@@ -62,8 +62,6 @@ services:
         ports:
             - "58080:80"
         environment:
-            PMA_HOST: mysql
-            PMA_USER: root
-            PMA_PASSWORD: root
+            PMA_HOST: zkmysql
         networks:
           - lemp
