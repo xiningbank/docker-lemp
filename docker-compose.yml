@@ -6,7 +6,7 @@ networks:
 services:
     nginx:
         image: nginx:latest
-        container_name: zknginx
+        container_name: ${NGINX_CONTAINER:-nginx}
         ports:
             - "50080:80"
             - "50443:443"
@@ -25,21 +25,21 @@ services:
             - lemp
     mysql:
         image: mariadb:latest
-        container_name: zkmysql
+        container_name: ${MYSQL_CONTAINER:-mysql}
         ports:
             - "53306:3306"
         volumes:
             - ./mysql:/var/lib/mysql
         environment:
-            MYSQL_ROOT_PASSWORD: root
-            TZ: "Asia/Shanghai"
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+            TZ: ${TZ:-Asia/Shanghai}
         networks:
             - lemp
     php:
         build:
             context: ./php/.
             dockerfile: Dockerfile
-        container_name: zkphp
+        container_name: ${PHP_CONTAINER:-php}
         volumes:
             - ./src:/var/www/html
         ports:
@@ -48,7 +48,7 @@ services:
             - lemp
     redis:
         image: redis:latest
-        container_name: zkredis
+        container_name: ${REDIS_CONTAINER:-redis}
         volumes:
             - ./redis/redis.conf:/etc/redis/redis.conf
             - ./redis/data:/data
@@ -58,10 +58,10 @@ services:
             - lemp
     phpmyadmin:
         image: phpmyadmin:latest
-        container_name: zkphpmyadmin
+        container_name: ${PMA_CONTAINER:-phpmyadmin}
         ports:
             - "58080:80"
         environment:
-            PMA_HOST: zkmysql
+            PMA_HOST: ${PMA_HOST:-mysql}
         networks:
           - lemp
