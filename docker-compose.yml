@@ -31,6 +31,7 @@ services:
         volumes:
             - ./mysql:/var/lib/mysql
         environment:
+            LANG: C.UTF-8
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
             TZ: ${TZ:-Asia/Shanghai}
         networks:
@@ -40,6 +41,8 @@ services:
             context: ./php/.
             dockerfile: Dockerfile
         container_name: ${PHP_CONTAINER:-php}
+        environment:
+            LANG: C.UTF-8
         volumes:
             - ./src:/var/www/html
         ports:
