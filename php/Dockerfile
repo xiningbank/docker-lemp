@@ -2,6 +2,8 @@ FROM php:7.4.12-fpm
 
 MAINTAINER zhoukan "zkshpro@163.com"
 
+ENV LANG C.UTF-8
+
 RUN apt-get update \
 	&& apt-get install vim -qqy \
 	&& apt-get install git -qqy \
