@@ -9,6 +9,7 @@ RUN apt-get update \
 	&& apt-get install git -qqy \
 	&& apt-get install zip -qqy \
 	&& apt-get install unzip -qqy \
+	&& apt-get install procps -qqy \
     && docker-php-ext-install bcmath \
     && docker-php-ext-install pdo_mysql \
     && pecl install redis && docker-php-ext-enable redis
