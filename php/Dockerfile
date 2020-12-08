@@ -12,9 +12,11 @@ RUN apt-get update \
 	&& apt-get install procps -qqy \
     && docker-php-ext-install bcmath \
     && docker-php-ext-install pdo_mysql \
-    && pecl install redis && docker-php-ext-enable redis
+    && pecl install redis && docker-php-ext-enable redis \
+    && pecl install xdebug && docker-php-ext-enable xdebug
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN echo "alias ll='ls -lh --color=auto'" >> ~/.bashrc
+
