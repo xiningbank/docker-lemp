@@ -20,7 +20,7 @@ services:
         environment:
             TZ: ${TZ:-Asia/Shanghai}
         depends_on:
-            - php
+            - php7
             - mysql
         privileged: true
         networks:
@@ -38,11 +38,11 @@ services:
             TZ: ${TZ:-Asia/Shanghai}
         networks:
             - lemp
-    php:
+    php7:
         build:
-            context: ./php/.
+            context: ./php7/.
             dockerfile: Dockerfile
-        container_name: ${PHP_CONTAINER:-php}
+        container_name: ${PHP7_CONTAINER:-php7}
         volumes:
             - ./src:/var/www/html
         ports:
@@ -59,9 +59,9 @@ services:
             - "56379:6379"
         networks:
             - lemp
-    phpmyadmin:
+    pma:
         image: phpmyadmin:latest
-        container_name: ${PMA_CONTAINER:-phpmyadmin}
+        container_name: ${PMA_CONTAINER:-pma}
         ports:
             - "58080:80"
         environment:
