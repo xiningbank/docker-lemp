@@ -8,7 +8,7 @@ services:
         image: nginx:latest
         container_name: ${NGINX_CONTAINER:-nginx}
         ports:
-            - "50080:80"
+            - "80:80"
             - "50443:443"
         volumes:
             - ./src:/var/www/html
