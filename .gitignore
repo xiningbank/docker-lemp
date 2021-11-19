@@ -3,6 +3,9 @@
 mysql/*
 !mysql/.gitkeep
 
+mariadb/*
+!mariadb/.gitkeep
+
 src/*
 !src/.gitkeep
 
