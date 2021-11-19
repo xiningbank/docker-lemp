@@ -21,20 +21,20 @@ services:
             TZ: ${TZ:-Asia/Shanghai}
         depends_on:
             - php7
-            - mysql
+            - mariadb
         privileged: true
         networks:
             - lemp
-    mysql:
+    mariadb:
         image: mariadb:latest
-        container_name: ${MYSQL_CONTAINER:-mysql}
+        container_name: ${MARIADB_CONTAINER:-mariadb}
         ports:
             - "3306:3306"
         volumes:
-            - ./mysql:/var/lib/mysql
+            - ./mariadb:/var/lib/mysql
         environment:
             LANG: C.UTF-8
-            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+            MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:-root}
             TZ: ${TZ:-Asia/Shanghai}
         networks:
             - lemp
@@ -66,6 +66,6 @@ services:
         ports:
             - "8080:80"
         environment:
-            PMA_HOST: ${PMA_HOST:-mysql}
+            PMA_HOST: ${PMA_HOST:-mariadb}
         networks:
           - lemp
