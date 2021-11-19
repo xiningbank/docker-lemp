@@ -73,6 +73,6 @@ services:
         image: schickling/mailcatcher
         container_name: ${MAILCATCHER_CONTAINER:-mailcatcher}
         ports:
-            - "1080:1080"
+            - "1081:1080"
         networks:
             - lemp
