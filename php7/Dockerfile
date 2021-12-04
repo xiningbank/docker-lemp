@@ -1,19 +1,25 @@
 FROM php:7.4.12-fpm
 
-MAINTAINER zhoukan "zkshpro@163.com"
+MAINTAINER zhoukan "xiningbank@gmail.com"
 
 ENV LANG C.UTF-8
 
-RUN apt-get update \
-	&& apt-get install vim -qqy \
-	&& apt-get install git -qqy \
-	&& apt-get install zip -qqy \
-	&& apt-get install unzip -qqy \
-	&& apt-get install procps -qqy \
-    && docker-php-ext-install bcmath \
-    && docker-php-ext-install pdo_mysql \
-    && pecl install redis && docker-php-ext-enable redis \
-    && pecl install xdebug && docker-php-ext-enable xdebug
+RUN apt-get update
+RUN apt-get install zip -qqy
+RUN apt-get install unzip -qqy
+RUN apt-get install procps -qqy
+RUN apt-get install -y sendmail libpng-dev
+RUN apt-get install -y zlib1g-dev
+RUN apt-get install -y libjpeg-dev
+
+RUN docker-php-ext-configure gd --with-jpeg
+RUN docker-php-ext-install gd
+RUN docker-php-ext-install bcmath
+RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install mysqli
+
+RUN pecl install redis && docker-php-ext-enable redis
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
