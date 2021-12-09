@@ -8,8 +8,9 @@ RUN apt-get update
 RUN apt-get install zip -qqy
 RUN apt-get install unzip -qqy
 RUN apt-get install procps -qqy
-RUN apt-get install -y sendmail libpng-dev
+RUN apt-get install -y sendmail
 RUN apt-get install -y zlib1g-dev
+RUN apt-get install -y libpng-dev
 RUN apt-get install -y libjpeg-dev
 
 RUN docker-php-ext-configure gd --with-jpeg
