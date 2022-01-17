@@ -77,3 +77,15 @@ services:
             - "1081:1080"
         networks:
             - lemp
+    meilisearch:
+        build:
+            context: ./meilisearch/.
+            dockerfile: Dockerfile_meilisearch_v0.25.1
+        image: df_meilisearch_v0.25.1
+        container_name: zkmeilisearch
+        volumes:
+            - ./data.ms:/data.ms
+        ports:
+            - "7700:7700"
+        networks:
+            - lemp
