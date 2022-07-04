@@ -5,7 +5,7 @@ networks:
 
 services:
     nginx:
-        image: nginx:1.20.2-alpine
+        image: nginx:1.23.0-alpine
         container_name: ${NGINX_CONTAINER:-nginx}
         ports:
             - "80:80"
@@ -21,28 +21,28 @@ services:
             TZ: ${TZ:-Asia/Shanghai}
         depends_on:
             - php7
-            - mariadb
+            - mysql
         privileged: true
         networks:
             - lemp
-    mariadb:
-        image: mariadb:latest
-        container_name: ${MARIADB_CONTAINER:-mariadb}
+    mysql:
+        image: mysql:8.0.29
+        container_name: ${MYSQL_CONTAINER:-mysql}
         ports:
             - "3306:3306"
         volumes:
-            - ./mariadb:/var/lib/mysql
+            - ./mysql:/var/lib/mysql
         environment:
             LANG: C.UTF-8
-            MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:-root}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
             TZ: ${TZ:-Asia/Shanghai}
         networks:
             - lemp
     php7:
         build:
             context: ./php/.
-            dockerfile: Dockerfile_php_7.4.27-fpm
-        image: df_php_7.4.27-fpm
+            dockerfile: Dockerfile_php_7.4.30-fpm
+        image: df_php_7.4.30-fpm
         container_name: ${PHP7_CONTAINER:-php7}
         volumes:
             - ./src:/var/www/html
@@ -51,7 +51,7 @@ services:
         networks:
             - lemp
     redis:
-        image: redis:6.2.6-alpine
+        image: redis:7.0.2-alpine
         container_name: ${REDIS_CONTAINER:-redis}
         command: redis-server --requirepass ${REDIS_PASSWORD}
         volumes:
@@ -67,7 +67,7 @@ services:
         ports:
             - "8080:80"
         environment:
-            PMA_HOST: ${PMA_HOST:-mariadb}
+            PMA_HOST: ${PMA_HOST:-mysql}
         networks:
           - lemp
     mailcatcher:
