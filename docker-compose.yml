@@ -41,8 +41,8 @@ services:
     php7:
         build:
             context: ./php/.
-            dockerfile: Dockerfile_php_7.4.30-fpm
-        image: df_php_7.4.30-fpm
+            dockerfile: Dockerfile_php_7.4.29-fpm
+        image: df_php_7.4.29-fpm
         container_name: ${PHP7_CONTAINER:-php7}
         volumes:
             - ./src:/var/www/html
