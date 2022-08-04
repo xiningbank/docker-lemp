@@ -1,20 +1,8 @@
 .env
 
-mysql/*
-!mysql/.gitkeep
-
-mariadb/*
-!mariadb/.gitkeep
-
-src/*
-!src/.gitkeep
-
+# nginx
 nginx/sites-available/*
 !nginx/sites-available/default.conf
-
 nginx/sites-enabled/*
-
 nginx/log/*
 
-# editor
-.idea
