@@ -29,7 +29,7 @@ services:
         image: mysql:8.0.29
         container_name: ${MYSQL_CONTAINER:-mysql}
         ports:
-            - "3306:3306"
+            - "33306:3306"
         volumes:
             - ./mysql:/var/lib/mysql
         environment:
@@ -65,7 +65,7 @@ services:
         image: phpmyadmin:latest
         container_name: ${PMA_CONTAINER:-pma}
         ports:
-            - "8080:80"
+            - "30080:80"
         environment:
             PMA_HOST: ${PMA_HOST:-mysql}
         networks:
