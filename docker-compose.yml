@@ -40,9 +40,9 @@ services:
             - lemp
     php7:
         build:
-            context: ./php/.
-            dockerfile: Dockerfile_php_7.4.29-fpm
-        image: df_php_7.4.29-fpm
+            context: ./Dockerfiles/.
+            dockerfile: ${PHP7_DOCKERFILE}
+        image: ${PHP7_IMAGE}
         container_name: ${PHP7_CONTAINER:-php7}
         volumes:
             - ./src:/var/www/html
