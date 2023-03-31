@@ -8,4 +8,5 @@ nginx/cert/*
 nginx/log/*
 
 # redis
-redisqueue
+redis/data/*
+redisqueue/data/*
