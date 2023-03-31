@@ -5,7 +5,7 @@ networks:
 
 services:
     nginx:
-        image: nginx:1.23.0-alpine
+        image: ${NGINX_IMAGE}
         container_name: ${NGINX_CONTAINER:-nginx}
         ports:
             - "80:80"
@@ -26,7 +26,7 @@ services:
         networks:
             - lemp
     mysql:
-        image: mysql:8.0.29
+        image: ${MYSQL_IMAGE}
         container_name: ${MYSQL_CONTAINER:-mysql}
         ports:
             - "33306:3306"
@@ -34,7 +34,7 @@ services:
             - ./mysql:/var/lib/mysql
         environment:
             LANG: C.UTF-8
-            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
             TZ: ${TZ:-Asia/Shanghai}
         networks:
             - lemp
@@ -51,7 +51,7 @@ services:
         networks:
             - lemp
     redis:
-        image: redis:7.0.2-alpine
+        image: ${REDIS_IMAGE}
         container_name: ${REDIS_CONTAINER:-redis}
         command: redis-server --requirepass ${REDIS_PASSWORD}
         volumes:
@@ -62,7 +62,7 @@ services:
         networks:
             - lemp
     redisqueue:
-        image: redis:7.0.2-alpine
+        image: ${REDIS_IMAGE}
         container_name: ${REDIS_QUEUE_CONTAINER:-redisqueue}
         command: redis-server --requirepass ${REDIS_QUEUE_PASSWORD}
         volumes:
@@ -73,7 +73,7 @@ services:
         networks:
             - lemp
     pma:
-        image: phpmyadmin:latest
+        image: ${PMA_IMAGE}
         container_name: ${PMA_CONTAINER:-pma}
         ports:
             - "30080:80"
@@ -89,7 +89,7 @@ services:
         networks:
             - lemp
     meilisearch:
-        image: getmeili/meilisearch:v0.25.2
+        image: ${MEILISEARCH_IMAGE}
         container_name: ${MEILISEARCH_CONTAINER:-meilisearch}
         volumes:
             - ./meilisearch/data.ms:/data.ms
