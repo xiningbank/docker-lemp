@@ -57,7 +57,7 @@ services:
             - ./redis/redis.conf:/etc/redis/redis.conf
             - ./redis/data:/data
         ports:
-            - "127.0.0.1:6379:6379"
+            - 127.0.0.1:6379:6379
         networks:
             - lemp
     redisqueue:
@@ -67,7 +67,7 @@ services:
             - ./redisqueue/redis.conf:/etc/redis/redis.conf
             - ./redisqueue/data:/data
         ports:
-            - "127.0.0.1:6380:6379"
+            - 127.0.0.1:6380:6379
         networks:
             - lemp
     meilisearch:
