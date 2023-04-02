@@ -70,6 +70,17 @@ services:
             - "127.0.0.1:6380:6379"
         networks:
             - lemp
+    meilisearch:
+        image: ${MEILISEARCH_IMAGE}
+        container_name: ${MEILISEARCH_CONTAINER:-meilisearch}
+        volumes:
+            - ./meilisearch/data.ms:/data.ms
+        ports:
+            - "37700:7700"
+        environment:
+            MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
+        networks:
+            - lemp
     pma:
         image: ${PMA_IMAGE}
         container_name: ${PMA_CONTAINER:-pma}
@@ -86,14 +97,3 @@ services:
             - "1081:1080"
         networks:
             - lemp
-    meilisearch:
-        image: ${MEILISEARCH_IMAGE}
-        container_name: ${MEILISEARCH_CONTAINER:-meilisearch}
-        volumes:
-            - ./meilisearch/data.ms:/data.ms
-        ports:
-            - "37700:7700"
-        environment:
-            MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
-        networks:
-            - lemp 
