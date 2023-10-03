@@ -10,3 +10,6 @@ nginx/log/*
 # redis
 redis/data/*
 redisqueue/data/*
+
+# editor
+/.idea
