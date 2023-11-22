@@ -81,15 +81,6 @@ services:
             MEILI_MASTER_KEY: ${MEILISEARCH_MASTER_KEY}
         networks:
             - lemp
-    pma:
-        image: ${PMA_IMAGE}
-        container_name: ${PMA_CONTAINER:-pma}
-        ports:
-            - "30080:80"
-        environment:
-            PMA_HOST: ${PMA_HOST:-mysql}
-        networks:
-          - lemp
     mailcatcher:
         image: schickling/mailcatcher
         container_name: ${MAILCATCHER_CONTAINER:-mailcatcher}
