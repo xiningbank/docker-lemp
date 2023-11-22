@@ -11,7 +11,7 @@ services:
             - "80:80"
             - "443:443"
         volumes:
-            - /var/www/src:/var/www/html
+            - /var/www/html:/var/www/html
             - ./nginx/nginx.conf:/etc/nginx/nginx.conf
             - ./nginx/sites-available:/etc/nginx/sites-available
             - ./nginx/sites-enabled:/etc/nginx/sites-enabled
@@ -45,7 +45,7 @@ services:
         image: ${PHP7_IMAGE}
         container_name: ${PHP7_CONTAINER:-php7}
         volumes:
-            - /var/www/src:/var/www/html
+            - /var/www/html:/var/www/html
         ports:
             - "127.0.0.1:9000:9000"
         networks:
