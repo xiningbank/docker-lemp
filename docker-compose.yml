@@ -29,7 +29,7 @@ services:
         image: ${MYSQL_IMAGE}
         container_name: ${MYSQL_CONTAINER:-mysql}
         ports:
-            - "33306:3306"
+            - "${MYSQL_PORT}:3306"
         volumes:
             - ./mysql:/var/lib/mysql
         environment:
