@@ -81,10 +81,3 @@ services:
             MEILI_MASTER_KEY: ${MEILISEARCH_MASTER_KEY}
         networks:
             - lemp
-    mailcatcher:
-        image: schickling/mailcatcher
-        container_name: ${MAILCATCHER_CONTAINER:-mailcatcher}
-        ports:
-            - "1081:1080"
-        networks:
-            - lemp
