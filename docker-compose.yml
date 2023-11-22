@@ -76,7 +76,7 @@ services:
         volumes:
             - ./meilisearch/data.ms:/data.ms
         ports:
-            - "37700:7700"
+            - "${MEILISEARCH_PORT}:7700"
         environment:
             MEILI_MASTER_KEY: ${MEILISEARCH_MASTER_KEY}
         networks:
