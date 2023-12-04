@@ -7,9 +7,5 @@ nginx/sites-enabled/*
 nginx/cert/*
 nginx/log/*
 
-# redis
-redis/data/*
-redisqueue/data/*
-
 # editor
 /.idea
