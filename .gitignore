@@ -1,11 +1,4 @@
 .env
 
-# nginx
-nginx/sites-available/*
-!nginx/sites-available/default.conf
-nginx/sites-enabled/*
-nginx/cert/*
-nginx/log/*
-
 # editor
 /.idea
