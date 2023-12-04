@@ -1,0 +1,5 @@
+cert/*
+log/*
+sites-available/*
+!sites-available/default.conf
+sites-enabled/*
