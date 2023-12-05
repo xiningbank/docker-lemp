@@ -42,6 +42,9 @@ services:
         build:
             context: ./Dockerfiles/.
             dockerfile: ${PHP7_DOCKERFILE}
+        # Because this container will be created by a Dockerfile, this parameter(image) is not a must.
+        # if you want to specify a name, you can specify whatever you like, as long as it won't conflict with other images.
+        # if this parameter is ignored, in this instance, the image name will be "docker-lemp_php7:latest".
         image: ${PHP7_IMAGE}
         container_name: ${PHP7_CONTAINER:-php7}
         volumes:
