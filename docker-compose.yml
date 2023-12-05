@@ -40,7 +40,7 @@ services:
             - lemp
     php7:
         build:
-            context: ./Dockerfiles/.
+            context: ./Dockerfiles
             dockerfile: ${PHP7_DOCKERFILE}
         # Because this container will be created by a Dockerfile, this parameter(image) is not a must.
         # if you want to specify a name, you can specify whatever you like, as long as it won't conflict with other images.
