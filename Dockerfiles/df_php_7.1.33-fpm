@@ -23,6 +23,7 @@ RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install zip
 
 RUN pecl install redis-5.3.7 && docker-php-ext-enable redis
+RUN pecl install xlswriter-1.5.0 && docker-php-ext-enable xlswriter
 #RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 # install composer
