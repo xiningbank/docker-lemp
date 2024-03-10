@@ -46,7 +46,7 @@ services:
         # if you want to specify a name, you can specify whatever you like, as long as it won't conflict with other images.
         # if this parameter is ignored, in this instance, the image name will be "docker-lemp_php7:latest".
         image: df_php_7.4.33-fpm
-        container_name: ${PHP7_4_33_CONTAINER:-php7.4.33}
+        container_name: ${CNP}php7.4.33
         volumes:
             - /var/www/html:/var/www/html
         ports:
