@@ -40,16 +40,16 @@ services:
     php7.4.33:
         build:
             context: ./Dockerfiles
-            dockerfile: df_php_7.4.33-fpm
+            dockerfile: df_php7.4.33-fpm
         # Because this container will be created by a Dockerfile, this parameter(image) is not a must.
         # if you want to specify a name, you can specify whatever you like, as long as it won't conflict with other images.
         # if this parameter is ignored, in this instance, run "docker images", the information will be displayed as below:
         # REPOSITORY                TAG     IMAGE ID
-        # df_php_7.4.33-fpm         latest  12ee21a0e1c5
+        # df_php7.4.33-fpm          latest  12ee21a0e1c5
         # docker-lemp-php7.4.33     latest  12ee21a0e1c5
         # the two images share the same Image ID.
-        # if run "docker ps", you'll see the IMAGE is: df_php_7.4.33-fpm
-        image: df_php_7.4.33-fpm
+        # if run "docker ps", you'll see the IMAGE is: df_php7.4.33-fpm
+        image: df_php7.4.33-fpm
         container_name: ${CNP}php7.4.33
         volumes:
             - /var/www/html:/var/www/html
