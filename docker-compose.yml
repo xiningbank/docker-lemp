@@ -7,6 +7,7 @@ services:
     nginx:
         image: ${NGINX_IMAGE}
         container_name: ${NGINX_CONTAINER:-nginx}
+        restart: always
         ports:
             - "80:80"
             - "443:443"
