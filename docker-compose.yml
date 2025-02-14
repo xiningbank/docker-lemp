@@ -22,7 +22,6 @@ services:
             TZ: ${TZ:-Asia/Shanghai}
         depends_on:
             - php7.4.33
-            - mysql
         networks:
             - lemp
     mysql:
