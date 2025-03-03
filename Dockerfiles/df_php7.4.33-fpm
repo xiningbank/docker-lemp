@@ -13,7 +13,7 @@ RUN apt install -y zlib1g-dev
 RUN apt install -y libpng-dev
 RUN apt install -y libjpeg-dev
 RUN apt install -y libfreetype6-dev
-RUN apt install -y libzip-dev zlib1g-dev
+RUN apt install -y libzip-dev
 
 RUN docker-php-ext-configure gd --with-jpeg --with-freetype
 RUN docker-php-ext-install gd
