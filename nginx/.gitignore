@@ -1,4 +1,4 @@
-log/*
-sites-available/*
+log/
+sites-available/
 !sites-available/default.conf
-sites-enabled/*
+sites-enabled/
