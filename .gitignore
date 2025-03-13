@@ -1,13 +1,3 @@
 .env
-mysql/*
-
-# nginx
-nginx/sites-available/*
-!nginx/sites-available/default.conf
-nginx/sites-enabled/*
-nginx/cert/*
-nginx/log/*
-
-# redis
-redis/data/*
-redisqueue/data/*
+mysql/
+certbot/

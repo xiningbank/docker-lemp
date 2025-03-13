@@ -1,0 +1,26 @@
+FROM php:7.4.33-fpm
+
+MAINTAINER zhoukan "xiningbank@gmail.com"
+
+ENV LANG C.UTF-8
+
+RUN apt update && apt install -qqy \
+    zip \
+    unzip \
+    procps \
+    sendmail \
+    zlib1g-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN docker-php-ext-configure gd --with-jpeg --with-freetype \
+    && docker-php-ext-install gd bcmath pdo_mysql mysqli
+
+RUN pecl install redis-6.1.0 && docker-php-ext-enable redis
+
+# install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN echo "alias ll='ls -lh --color=auto'" >> ~/.bashrc
