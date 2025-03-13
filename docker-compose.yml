@@ -12,7 +12,7 @@ services:
             - "80:80"
             - "443:443"
         volumes:
-            - /var/www/html:/var/www/html
+            - ${HOST_SRC}:/var/www/html
             - ./nginx/nginx.conf:/etc/nginx/nginx.conf
             - ./nginx/sites-available:/etc/nginx/sites-available
             - ./nginx/sites-enabled:/etc/nginx/sites-enabled
@@ -52,7 +52,7 @@ services:
         image: df_php7.4.33-fpm
         container_name: ${CNP}php7.4.33
         volumes:
-            - /var/www/html:/var/www/html
+            - ${HOST_SRC}:/var/www/html
         ports:
             - "127.0.0.1:9000:9000"
         networks:
@@ -72,7 +72,7 @@ services:
         image: ${CERTBOT_IMAGE}
         container_name: ${CERTBOT_CONTAINER:-certbot}
         volumes:
-            - /var/www/html:/var/www/html
+            - ${HOST_SRC}:/var/www/html
             - ./certbot/data:/etc/letsencrypt
             - ./certbot/lib:/var/lib/letsencrypt
             - ./certbot/log:/var/log/letsencrypt
