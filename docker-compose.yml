@@ -27,6 +27,7 @@ services:
     mysql:
         image: ${MYSQL_IMAGE}
         container_name: ${MYSQL_CONTAINER:-mysql}
+        restart: always
         ports:
             - "${MYSQL_PORT}:3306"
         volumes:
