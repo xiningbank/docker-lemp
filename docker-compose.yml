@@ -86,7 +86,7 @@ services:
         container_name: ${MEILISEARCH_CONTAINER:-meilisearch}
         restart: always
         volumes:
-            - ./meilisearch/data.ms:/data.ms
+            - ./meilisearch/data:/data.ms
         ports:
             - "${MEILISEARCH_PORT}:7700"
         environment:
