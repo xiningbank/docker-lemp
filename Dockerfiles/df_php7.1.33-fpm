@@ -17,7 +17,7 @@ RUN apt update && apt install -qqy \
     && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-configure gd --with-jpeg --with-freetype \
-    && docker-php-ext-install gd bcmath pdo_mysql mysqli
+    && docker-php-ext-install gd bcmath pdo_mysql mysqli zip
 
 RUN pecl install redis-5.3.7 && docker-php-ext-enable redis \
     && pecl install xlswriter-1.5.0 && docker-php-ext-enable xlswriter
