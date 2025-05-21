@@ -13,10 +13,11 @@ RUN apt update && apt install -qqy \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
+    libzip-dev \
     && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-configure gd --with-jpeg --with-freetype \
-    && docker-php-ext-install gd bcmath pdo_mysql mysqli
+    && docker-php-ext-install gd bcmath pdo_mysql mysqli zip
 
 RUN pecl install redis-6.1.0 && docker-php-ext-enable redis
 
