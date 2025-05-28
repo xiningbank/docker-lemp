@@ -19,7 +19,8 @@ RUN apt update && apt install -qqy \
 RUN docker-php-ext-configure gd --with-jpeg --with-freetype \
     && docker-php-ext-install gd bcmath pdo_mysql mysqli zip
 
-RUN pecl install redis-6.1.0 && docker-php-ext-enable redis
+RUN pecl install redis-6.1.0 && docker-php-ext-enable redis \
+    && pecl install xdebug-3.1.5 && docker-php-ext-enable xdebug
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
