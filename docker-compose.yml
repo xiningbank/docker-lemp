@@ -93,6 +93,7 @@ services:
             MEILI_MASTER_KEY: ${MEILISEARCH_MASTER_KEY}
         networks:
             - lemp
+    # for dev use ONLY.
     mailcatcher:
         image: schickling/mailcatcher
         container_name: ${MAILCATCHER_CONTAINER:-mailcatcher}
