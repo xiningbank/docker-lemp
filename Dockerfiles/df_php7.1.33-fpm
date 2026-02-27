@@ -1,5 +1,16 @@
 FROM php:7.1.33-fpm
 
+# php:7.1.33-fpm 基础镜像基于Debian 10（代号 Buster）。而 Debian 10 已经在2024年6月30日生命周期结束（End of Life，EOL），官方将其软件源从 deb.debian.org 迁移到了 archive.debian.org
+# --- 添加以下内容：替换软件源为 archive.debian.org ---
+RUN sed -i 's|deb.debian.org|archive.debian.org|g' /etc/apt/sources.list \
+    && sed -i '/security.debian.org/d' /etc/apt/sources.list \
+    && echo "deb https://archive.debian.org/debian-security buster/updates main" >> /etc/apt/sources.list
+# --- 替换结束 ---
+# 或者也可以用以下这段（但这段未验证过）
+# RUN echo "deb https://archive.debian.org/debian/ buster main contrib non-free" > /etc/apt/sources.list \
+#    && echo "deb https://archive.debian.org/debian/ buster-updates main contrib non-free" >> /etc/apt/sources.list \
+#    && echo "deb https://archive.debian.org/debian-security buster/updates main contrib non-free" >> /etc/apt/sources.list
+
 MAINTAINER zhoukan "xiningbank@gmail.com"
 
 ENV LANG C.UTF-8
