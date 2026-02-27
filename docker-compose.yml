@@ -98,5 +98,6 @@ services:
         container_name: ${MAILCATCHER_CONTAINER:-mailcatcher}
         ports:
             - "1081:1080"
+            - "1025:1025"
         networks:
             - lemp
