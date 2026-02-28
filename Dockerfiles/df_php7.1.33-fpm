@@ -36,5 +36,3 @@ RUN pecl install redis-5.3.7 && docker-php-ext-enable redis \
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-RUN echo "alias ll='ls -lh --color=auto'" >> ~/.bashrc
