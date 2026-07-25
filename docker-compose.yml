@@ -55,8 +55,6 @@ services:
         restart: always
         volumes:
             - ${HOST_SRC}:/var/www/html
-        environment:
-            TZ: ${TZ:-Asia/Shanghai}
         ports:
             - "127.0.0.1:9000:9000"
         networks:
