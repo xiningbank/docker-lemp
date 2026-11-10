@@ -4,10 +4,16 @@ MAINTAINER zhoukan "xiningbank@gmail.com"
 
 ENV LANG C.UTF-8
 
+# due to debian 11 stopped LTS since 2026-08-11
+RUN sed -i 's|deb.debian.org/debian|archive.debian.org/debian|g' /etc/apt/sources.list \
+    && sed -i '/bullseye-security/d' /etc/apt/sources.list \
+    && echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until
+
 RUN apt update && apt install -qqy \
     zip \
     unzip \
     procps \
+    supervisor \
     sendmail \
     zlib1g-dev \
     libpng-dev \
@@ -22,6 +28,9 @@ RUN docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype \
 
 RUN pecl install redis-6.1.0 && docker-php-ext-enable redis \
     && pecl install xdebug-3.1.5 && docker-php-ext-enable xdebug
+
+# Supervisor is used by a dedicated container.
+COPY supervisor/worker.conf /etc/supervisor/worker.conf
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

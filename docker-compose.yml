@@ -40,8 +40,8 @@ services:
             - lemp
     php7.4.33:
         build:
-            context: ./Dockerfiles
-            dockerfile: df_php7.4.33-fpm
+            context: .
+            dockerfile: Dockerfiles/df_php7.4.33-fpm
         # Because this container will be created by a Dockerfile, this parameter(image) is not a must.
         # if you want to specify a name, you can specify whatever you like, as long as it won't conflict with other images.
         # if this parameter is ignored, in this instance, run "docker images", the information will be displayed as below:
@@ -57,6 +57,20 @@ services:
             - ${HOST_SRC}:/var/www/html
         ports:
             - "127.0.0.1:9000:9000"
+        networks:
+            - lemp
+    supervisor:
+        image: df_php7.4.33-fpm
+        container_name: ${CNP}supervisor
+        restart: always
+        stop_grace_period: 1h
+        command: [ "/usr/bin/supervisord", "-c", "/etc/supervisor/worker.conf" ]
+        volumes:
+            - ${SUPERVISOR_APP_PATH}:/var/www/html/${SUPERVISOR_APP_FOLDER}
+        environment:
+            TZ: ${TZ:-Asia/Shanghai}
+            SUPERVISOR_APP_FOLDER: ${SUPERVISOR_APP_FOLDER}
+            SUPERVISOR_QUEUES_DEFAULT: ${SUPERVISOR_QUEUES_DEFAULT}
         networks:
             - lemp
     redis:
