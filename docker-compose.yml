@@ -77,9 +77,9 @@ services:
         image: ${REDIS_IMAGE}
         container_name: ${REDIS_CONTAINER:-redis}
         restart: always
-        command: redis-server --requirepass ${REDIS_PASSWORD}
+        command: ["redis-server", "/etc/redis/redis.conf", "--requirepass", "${REDIS_PASSWORD}"]
         volumes:
-            - ./redis/redis.conf:/etc/redis/redis.conf
+            - ./redis/redis.conf:/etc/redis/redis.conf:ro
             - ./redis/data:/data
         ports:
             - "127.0.0.1:6379:6379"
