@@ -63,6 +63,7 @@ services:
         image: df_php7.4.33-fpm
         container_name: ${CNP}supervisor
         restart: always
+        stop_grace_period: 1h
         command: [ "/usr/bin/supervisord", "-c", "/etc/supervisor/worker.conf" ]
         volumes:
             - ${SUPERVISOR_APP_PATH}:/var/www/html/${SUPERVISOR_APP_FOLDER}
